@@ -2,8 +2,19 @@ import Common from "./Common";
 import Output from "./Output";
 import Input from "./Input";
 
+import Stats from "stats.js";
+
 export default class {
   constructor({ canvas }) {
+    const href = window.location.hash;
+
+    if (href === "#debug") {
+      this.stats = new Stats();
+      document.body.appendChild(this.stats.dom);
+
+      this.stats.showPanel(0);
+    }
+
     Input.init();
     Common.init({ canvas });
 
@@ -20,10 +31,12 @@ export default class {
   }
 
   render(t) {
+    if (this.stats) this.stats.begin();
     requestAnimationFrame(this.render.bind(this));
     Input.render(t);
     Common.render(t);
     this.output.render(t);
+    if (this.stats) this.stats.end();
   }
 
   resize() {

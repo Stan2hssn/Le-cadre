@@ -22,7 +22,7 @@ export default class {
       this.StarterGroup.add(this.Starter[key].mesh);
     });
 
-    Common.scene.add(this.StarterGroup);
+    Common.sceneManager.scenes.main.add(this.StarterGroup);
   }
 
   dispose() {}

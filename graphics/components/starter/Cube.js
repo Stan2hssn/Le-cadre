@@ -7,10 +7,9 @@ import {
   Uniform,
 } from "three";
 
-import Texture from "/Texture/texture.png";
+import ShadersManager from "../../managers/ShaderManager";
 
-import vertexShader from "../glsl/vertex.glsl";
-import fragmentShader from "../glsl/fragment.glsl";
+import AssetsManager from "../../managers/AssetsManager";
 
 export default class {
   params = {
@@ -18,11 +17,6 @@ export default class {
   };
 
   constructor(posX, posY, posZ) {
-    this.loader = new TextureLoader();
-
-    this.textures = {
-      matcap: this.loader.load(Texture),
-    };
     this.init(posX, posY, posZ);
   }
 
@@ -36,10 +30,9 @@ export default class {
         uTime: new Uniform(0),
         default: new Uniform(basic),
       },
-      vertexShader: vertexShader,
-      fragmentShader: fragmentShader,
+      vertexShader: ShadersManager.get("components", "default", "vertex"),
+      fragmentShader: ShadersManager.get("components", "default", "fragment"),
     });
-    this.material.matcap = this.textures.matcap;
 
     this.mesh = new Mesh(this.geometry, this.material);
 

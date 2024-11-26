@@ -21,4 +21,7 @@ export default defineConfig({
       root: "/", // Directory for root imports
     }),
   ],
+  server: {
+    open: "/#debug",
+  },
 });
