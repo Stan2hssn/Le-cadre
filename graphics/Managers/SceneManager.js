@@ -5,9 +5,12 @@ class SceneManager {
     this.params = params;
     this.scenes = {
       main: new Scene(),
+      room: new Scene(),
+      splash: new Scene(),
     };
 
     this.scenes.main.background = new Color(this.params.sceneColor);
+    this.scenes.room.background = new Color(this.params.sceneColor);
   }
 }
 

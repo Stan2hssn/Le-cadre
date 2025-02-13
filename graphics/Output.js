@@ -54,6 +54,10 @@ export default class {
       }
     });
 
+    if (this.composer) {
+      this.composer.dispose();
+    }
+
     Object.values(this.helpers).forEach((helper) => {
       if (typeof helper.dispose === "function") {
         helper.dispose();
@@ -68,10 +72,34 @@ export default class {
       }
     });
 
+    if (this.composer) {
+      this.composer.resize();
+    }
+
     Object.values(this.helpers).forEach((helper) => {
       if (typeof helper.resize === "function") {
         helper.resize();
       }
     });
+  }
+
+  debug(pane) {
+    if (pane === null) return;
+
+    Object.keys(this.Components).forEach((key) => {
+      if (typeof this.Components[key].debug === "function") {
+        this.Components[key].debug(pane);
+      }
+    });
+
+    Object.keys(this.helpers).forEach((key) => {
+      if (typeof this.helpers[key].debug === "function") {
+        this.helpers[key].debug(pane);
+      }
+    });
+
+    if (this.postComponent) {
+      this.postComponent.debug(pane);
+    }
   }
 }

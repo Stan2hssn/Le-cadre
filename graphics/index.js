@@ -8,17 +8,20 @@ export default class {
   constructor({ canvas }) {
     const href = window.location.hash;
 
+    Input.init();
+    Common.init({ canvas });
+
+    this.output = new Output();
+
     if (href === "#debug") {
       this.stats = new Stats();
       document.body.appendChild(this.stats.dom);
 
       this.stats.showPanel(0);
+
+      Common.setPane();
+      this.output.debug(Common.pane);
     }
-
-    Input.init();
-    Common.init({ canvas });
-
-    this.output = new Output();
 
     this.init();
   }

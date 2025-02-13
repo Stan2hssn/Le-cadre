@@ -1,11 +1,15 @@
 import Device from "./pure/Device.js";
 
+import { Color } from "three";
+
 import Managers from "./pure/Managers.js";
+
+import { Pane } from "tweakpane";
 
 class Common {
   // create a scene and the parameters for the scene
   params = {
-    sceneColor: 0x222222,
+    sceneColor: new Color(0.133, 0.133, 0.133), // Converted to float type
     cameraFov: 50,
     cameraNear: 0.01,
     cameraFar: 100.0,
@@ -24,6 +28,11 @@ class Common {
     this.sceneManager = Managers.SceneManager(this.params);
 
     this.cameraManager.setCameras();
+  }
+
+  setPane() {
+    this.pane = new Pane();
+    this.setDebug();
   }
 
   render(t) {
@@ -49,6 +58,8 @@ class Common {
     this.rendererManager.resize();
     this.cameraManager.resize(aspectRatio);
   }
+
+  setDebug() {}
 }
 
 export default new Common();

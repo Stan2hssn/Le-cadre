@@ -7,7 +7,9 @@ class AssetsManager {
     this.imageLoader = new TextureLoader();
     this.library = {
       Images: {
-        Normal: {},
+        Normal: {
+          advect: this.imageLoader.load("/Images/normal/advect.png"),
+        },
         Diffuse: {},
         Maps: {},
         BW: {},

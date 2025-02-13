@@ -4,6 +4,9 @@ import viewFragmentShader from "../shaders/composers/view/fragment.glsl";
 import defaultVertexShader from "../shaders/components/default/vertex.glsl";
 import defaultFragmentShader from "../shaders/components/default/fragment.glsl";
 
+import waveCursorVertexShader from "../shaders/components/waveCursor/face.vert";
+import waveCursorFragmentShader from "../shaders/components/waveCursor/color.frag";
+
 const Shaders = {
   composers: {
     view: {
@@ -15,6 +18,10 @@ const Shaders = {
     default: {
       vertex: defaultVertexShader,
       fragment: defaultFragmentShader,
+    },
+    waveCursor: {
+      vertex: waveCursorVertexShader,
+      fragment: waveCursorFragmentShader,
     },
   },
 };

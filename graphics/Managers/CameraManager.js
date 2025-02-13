@@ -50,13 +50,21 @@ class CameraManager {
   }
 
   setCameras() {
-    this.main = this.createCamera({
+    this.mainCamera = this.createCamera({
       type: "perspective",
-      name: "main",
-      position: new Vector3(2, 2, 9),
+      name: "mainCamera",
+      position: new Vector3(0, 20, 0),
       lookAt: new Vector3(0, 0, 0),
     });
-    this.activeCamera = this.cameras.main;
+
+    this.roomCamera = this.createCamera({
+      type: "orthographic",
+      name: "roomCamera",
+      position: new Vector3(0, 1, 0),
+      lookAt: new Vector3(0, 0, 0),
+    });
+
+    this.activeCamera = this.mainCamera;
   }
 
   render(t) {}
